@@ -18,6 +18,7 @@ content = st.text_area("Please enter a customer's English comment (only one comm
 
 
 if st.button('Run', key=1):
+    l = []
     with st.spinner('The system is loading and inferring model, please wait...'):
         @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None}, allow_output_mutation=True)
         def load_model():
@@ -25,8 +26,8 @@ if st.button('Run', key=1):
             return classifier
 
         model = load_model()
-
-    r = model(content)
+    l.append(content)
+    r = model(l)
     st.write('The predicted emotion is', r['label'])
     st.success('Model loading and inference successful!')
 
