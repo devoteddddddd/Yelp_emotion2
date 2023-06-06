@@ -28,6 +28,6 @@ if st.button('Run', key=1):
         model = load_model()
     l.append(content)
     r = model(l)
-    st.write('The predicted emotion is', r['label'])
+    st.write('The predicted emotion is', r[0]['label'])
     st.success('Model loading and inference successful!')
 
